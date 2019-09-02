@@ -8,6 +8,19 @@
 *.pptx
 
 
+# Visual studio + visual micro
+
+.vs/
+Debug/
+Release/
+*.sln
+__vm/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.vscode
+
+
 # Ignore list for Eagle, a PCB layout tool
 
 # Backup files
