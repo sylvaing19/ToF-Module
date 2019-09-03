@@ -7,7 +7,6 @@
 
 #include <Arduino.h>
 #include <Wire.h>
-#include <EEPROM.h>
 #include <ToF_sensor.h>
 #include <OneWireSInterface.h>
 #include "register_storage.h"
@@ -26,10 +25,20 @@ enum ErrCode
 
 static RegisterStorage registers(RANGE_ERROR);
 static OneWireSInterface slaveInterface(Serial, INSTRUCTION_ERROR, CHECKSUM_ERROR);
-static SensorMgr sensorMgr(MAIN_SENSOR_ERROR, AUX_SENSOR_ERROR);
+static SensorMgr sensorMgr(registers, MAIN_SENSOR_ERROR, AUX_SENSOR_ERROR);
 bool running;
 bool f_reset_requested;
 
+
+void read(uint8_t address, uint8_t size, uint8_t *data)
+{
+    registers.read(address, size, data);
+}
+
+uint8_t write(uint8_t address, uint8_t size, const uint8_t *data)
+{
+    return registers.write(address, size, data);
+}
 
 void factory_reset()
 {
@@ -42,7 +51,18 @@ void soft_reset()
     running = false;
 }
 
-void setup() {}
+uint32_t baudrate(uint8_t stored_baudrate)
+{
+    return 2000000 / ((uint32_t)stored_baudrate + 1);
+}
+
+void setup()
+{
+    slaveInterface.setReadCallback(read);
+    slaveInterface.setWriteCallback(write);
+    slaveInterface.setSoftResetCallback(soft_reset);
+    slaveInterface.setFactoryResetCallback(factory_reset);
+}
 
 void loop()
 {
@@ -50,10 +70,28 @@ void loop()
     f_reset_requested = false;
     registers.init();
     sensorMgr.begin();
-
-    //slaveInterface.begin(...);
+    slaveInterface.begin(baudrate(registers.getBaudrate()));
     while (running) {
+        sensorMgr.update();
+        slaveInterface.setHardwareStatus(sensorMgr.status());
+        slaveInterface.communicate();
 
+        /* Update slaveInterface settings if needed */
+        if (!slaveInterface.waitingToSendPacket()) {
+            if (registers.idChanged()) {
+                slaveInterface.setID(registers.getId());
+            }
+            if (registers.baudrateChanged()) {
+                slaveInterface.end();
+                slaveInterface.begin(baudrate(registers.getBaudrate()));
+            }
+            if (registers.returnDelayTimeChanged()) {
+                slaveInterface.setRDT((uint32_t)registers.getReturnDelayTime() * 2);
+            }
+            if (registers.statusReturnLevelChanged()) {
+                slaveInterface.setSRL(registers.getStatusReturnLevel());
+            }
+        }
     }
     slaveInterface.end();
     sensorMgr.end();
@@ -61,5 +99,4 @@ void loop()
     if (f_reset_requested) {
         registers.resetEEPROM();
     }
-    delay(50);
 }
