@@ -16,6 +16,17 @@ public:
     void end();
     void update();
     uint8_t status() const;
+    void resetMainMeasureCount();
+    void resetAuxMeasureCount();
+
+private:
+    RegisterStorage &mRegisters;
+    bool mainSensorWired;
+    bool auxSensorWired;
+    ToF_longRange mainSensor;
+    ToF_longRange auxSensor;
+    uint8_t mainMeasureCount;
+    uint8_t auxMeasureCount;
 };
 
 

@@ -1,7 +1,15 @@
 #include "sensor_mgr.h"
 
-SensorMgr::SensorMgr(RegisterStorage & aRegisterStorage, uint8_t aMainSensorErrorCode, uint8_t aAuxSensorErrorCode)
+#define MAIN_SENSOR_ADDR 42
+#define AUX_SENSOR_ADDR 43
+
+SensorMgr::SensorMgr(RegisterStorage & aRegisterStorage, uint8_t aMainSensorErrorCode, uint8_t aAuxSensorErrorCode) :
+    mRegisters(aRegisterStorage)
 {
+    mainSensorWired = false;
+    auxSensorWired = false;
+    mainMeasureCount = 0;
+    auxMeasureCount = 0;
 }
 
 void SensorMgr::begin()

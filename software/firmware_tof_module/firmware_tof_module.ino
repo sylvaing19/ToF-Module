@@ -33,6 +33,8 @@ bool f_reset_requested;
 void read(uint8_t address, uint8_t size, uint8_t *data)
 {
     registers.read(address, size, data);
+    // todo: check if range data was read
+    // call sensorMgr.resetMeasureCount() is needed
 }
 
 uint8_t write(uint8_t address, uint8_t size, const uint8_t *data)
