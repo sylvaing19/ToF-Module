@@ -11,6 +11,9 @@
 #include <OneWireSInterface.h>
 #include "register_storage.h"
 #include "sensor_mgr.h"
+#include "utils.h"
+
+#define INPUT_VOLTAGE_UPDATE_PERIOD 10000 // ms
 
 
 enum ErrCode
@@ -25,7 +28,7 @@ enum ErrCode
 
 static RegisterStorage registers(RANGE_ERROR);
 static OneWireSInterface slaveInterface(Serial, INSTRUCTION_ERROR, CHECKSUM_ERROR);
-static SensorMgr sensorMgr(registers, MAIN_SENSOR_ERROR, AUX_SENSOR_ERROR);
+static SensorMgr sensorMgr(registers);
 bool running;
 bool f_reset_requested;
 
@@ -33,8 +36,12 @@ bool f_reset_requested;
 void read(uint8_t address, uint8_t size, uint8_t *data)
 {
     registers.read(address, size, data);
-    // todo: check if range data was read
-    // call sensorMgr.resetMeasureCount() is needed
+    if (check_buffer_intersect(address, size, REG_MAIN_RANGE, 6)) {
+        sensorMgr.resetMainMeasureCount();
+    }
+    if (check_buffer_intersect(address, size, REG_AUX_RANGE, 6)) {
+        sensorMgr.resetAuxMeasureCount();
+    }
 }
 
 uint8_t write(uint8_t address, uint8_t size, const uint8_t *data)
@@ -53,9 +60,14 @@ void soft_reset()
     running = false;
 }
 
-uint32_t baudrate(uint8_t stored_baudrate)
+void main_sensor_ready()
 {
-    return 2000000 / ((uint32_t)stored_baudrate + 1);
+    sensorMgr.mainSensorReady();
+}
+
+void aux_sensor_ready()
+{
+    sensorMgr.auxSensorReady();
 }
 
 void setup()
@@ -64,18 +76,36 @@ void setup()
     slaveInterface.setWriteCallback(write);
     slaveInterface.setSoftResetCallback(soft_reset);
     slaveInterface.setFactoryResetCallback(factory_reset);
+    pinMode(MAIN_SENSOR_INT_PIN, INPUT);
+    pinMode(AUX_SENSOR_INT_PIN, INPUT);
+    attachInterrupt(MAIN_SENSOR_INT_PIN, main_sensor_ready, FALLING);
+    attachInterrupt(AUX_SENSOR_INT_PIN, aux_sensor_ready, FALLING);
 }
 
 void loop()
 {
+    uint32_t last_vcc_update = 0;
+    uint32_t now;
     running = true;
     f_reset_requested = false;
     registers.init();
     sensorMgr.begin();
     slaveInterface.begin(baudrate(registers.getBaudrate()));
     while (running) {
+        /* Input voltage update */
+        now = millis();
+        if (now - last_vcc_update > INPUT_VOLTAGE_UPDATE_PERIOD) {
+            last_vcc_update = now;
+            long vcc = read_vcc();
+            vcc /= 40;
+            registers.writeRAM(REG_INPUT_VOLTAGE, (uint8_t)vcc);
+        }
+
+        /* Sensors update */
         sensorMgr.update();
         slaveInterface.setHardwareStatus(sensorMgr.status());
+
+        /* Communication with master */
         slaveInterface.communicate();
 
         /* Update slaveInterface settings if needed */

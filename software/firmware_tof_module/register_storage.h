@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-#define REGISTER_SIZE 50
+#define REGISTER_SIZE 51
 #define EEPROM_AREA_SIZE 32
 
 
@@ -29,6 +29,8 @@ enum RegisterMap
     REG_AUX_PERIOD = 0x17,
 
     REG_AUTO_START = 0x1B,
+    REG_MAIN_POLLING = 0x1C,
+    REG_AUX_POLLING = 0x1D,
 
     /* RAM area */
     REG_MAIN_ENABLED = 0x20,
@@ -45,7 +47,8 @@ enum RegisterMap
     REG_AUX_RAW_RANGE = 0x2D,
     REG_AUX_QUALITY = 0x2F,
 
-    REG_LOCK = 0x31,
+    REG_INPUT_VOLTAGE = 0x31,
+    REG_LOCK = 0x32,
 };
 
 

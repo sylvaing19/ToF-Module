@@ -148,10 +148,10 @@ bool RegisterStorage::writable[REGISTER_SIZE] = {
     true,
 
     true, // REG_AUTO_START = 0x1B
+    true, // REG_MAIN_POLLING = 0x1C
+    true, // REG_AUX_POLLING = 0x1C
 
-    false, // Reserved (0x1C - 0x1F)
-    false,
-    false,
+    false, // Reserved (0x1E - 0x1F)
     false,
 
     /* RAM area */
@@ -175,7 +175,8 @@ bool RegisterStorage::writable[REGISTER_SIZE] = {
     false, // REG_AUX_QUALITY = 0x2F
     false,
 
-    true, // REG_LOCK = 0x31
+    false, // REG_INPUT_VOLTAGE = 0x31
+    true, // REG_LOCK = 0x32
 };
 
 uint8_t RegisterStorage::min_range[REGISTER_SIZE] = {
@@ -212,10 +213,10 @@ uint8_t RegisterStorage::min_range[REGISTER_SIZE] = {
     0,
 
     0, // REG_AUTO_START = 0x1B
+    0, // REG_MAIN_POLLING = 0x1C
+    0, // REG_AUX_POLLING = 0x1D
 
-    0, // Reserved (0x1C - 0x1F)
-    0,
-    0,
+    0, // Reserved (0x1E - 0x1F)
     0,
 
     /* RAM area */
@@ -239,7 +240,8 @@ uint8_t RegisterStorage::min_range[REGISTER_SIZE] = {
     0, // REG_AUX_QUALITY = 0x2F
     0,
 
-    0, // REG_LOCK = 0x31
+    0, // REG_INPUT_VOLTAGE = 0x31
+    0, // REG_LOCK = 0x32
 };
 
 uint8_t RegisterStorage::max_range[REGISTER_SIZE] = {
@@ -276,10 +278,10 @@ uint8_t RegisterStorage::max_range[REGISTER_SIZE] = {
     255,
 
     1, // REG_AUTO_START = 0x1B
+    1, // REG_MAIN_POLLING = 0x1C
+    1, // REG_AUX_POLLING = 0x1D
 
-    255, // Reserved (0x1C - 0x1F)
-    255,
-    255,
+    255, // Reserved (0x1E - 0x1F)
     255,
 
     /* RAM area */
@@ -303,7 +305,8 @@ uint8_t RegisterStorage::max_range[REGISTER_SIZE] = {
     255, // REG_AUX_QUALITY = 0x2F
     255,
 
-    1, // REG_LOCK = 0x31
+    175, // REG_INPUT_VOLTAGE = 0x31
+    1, // REG_LOCK = 0x32
 };
 
 uint8_t RegisterStorage::eeprom_default[EEPROM_AREA_SIZE] = {
@@ -340,10 +343,10 @@ uint8_t RegisterStorage::eeprom_default[EEPROM_AREA_SIZE] = {
     0x00,
 
     1, // REG_AUTO_START = 0x1B
+    0, // REG_MAIN_POLLING = 0x1C
+    0, // REG_AUX_POLLING = 0x1D
 
-    0, // Reserved (0x1C - 0x1F)
-    0,
-    0,
+    0, // Reserved (0x1E - 0x1F)
     0,
 };
 
