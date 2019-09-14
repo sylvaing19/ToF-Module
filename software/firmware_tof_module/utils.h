@@ -3,6 +3,11 @@
 
 #include <Arduino.h>
 
+#define PIN_DEBUG_A 6
+#define PIN_DEBUG_B 7
+#define PIN_DEBUG_C 8
+#define PIN_DEBUG_D 9
+
 static long read_vcc()
 {
 #ifdef __AVR_ATmega328P__
@@ -20,14 +25,24 @@ static long read_vcc()
 #endif
 }
 
+static int free_ram()
+{
+    extern int __heap_start, *__brkval;
+    int v;
+    return (int)&v - (__brkval == 0 ? (int)&__heap_start : (int)__brkval);
+}
+
 static bool check_buffer_intersect(size_t b1_start, size_t b1_size,
     size_t b2_start, size_t b2_size)
 {
     if (b1_start < b2_start) {
-        return b1_start + b1_size >= b2_start;
+        return b1_start + b1_size > b2_start;
+    }
+    else if (b1_start > b2_start) {
+        return b1_start < b2_start + b2_size;
     }
     else {
-        return b1_start < b2_start + b2_size;
+        return b1_size > 0 && b2_size > 0;
     }
 }
 

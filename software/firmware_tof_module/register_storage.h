@@ -96,6 +96,7 @@ public:
 
 private:
     bool checkMagic();
+    void writeMagic();
 
     bool mIdChanged;
     bool mBaudrateChanged;

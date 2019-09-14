@@ -115,7 +115,7 @@ void Sensor::update()
     mSensor.setRange(min_range, max_range);
     mSensor.setQualityThreshold(quality_threshold);
 
-    SensorValue range;
+    SensorValue range = 0;
     uint16_t rawRange;
     uint16_t quality;
     int ret = mSensor.getFullMeasure(range, rawRange, quality);

@@ -22,6 +22,7 @@ RegisterStorage::RegisterStorage(uint8_t aRangeErrorCode) :
 void RegisterStorage::init()
 {
     if (!checkMagic()) {
+        writeMagic();
         resetEEPROM();
     }
     for (size_t i = 0; i < EEPROM_AREA_SIZE; i++) {
@@ -111,6 +112,14 @@ bool RegisterStorage::checkMagic()
         EEPROM.read(MAGIC_ADDR + 1) == MAGIC_DATA_1 &&
         EEPROM.read(MAGIC_ADDR + 2) == MAGIC_DATA_2 &&
         EEPROM.read(MAGIC_ADDR + 3) == MAGIC_DATA_3;
+}
+
+void RegisterStorage::writeMagic()
+{
+    EEPROM.write(MAGIC_ADDR, MAGIC_DATA_0);
+    EEPROM.write(MAGIC_ADDR + 1, MAGIC_DATA_1);
+    EEPROM.write(MAGIC_ADDR + 2, MAGIC_DATA_2);
+    EEPROM.write(MAGIC_ADDR + 3, MAGIC_DATA_3);
 }
 
 
