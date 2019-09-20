@@ -29,7 +29,7 @@ enum ErrCode
 
 SoftwareSerial debug(10, 11);
 static RegisterStorage registers(RANGE_ERROR);
-static OneWireSInterface slaveInterface(Serial, debug, INSTRUCTION_ERROR, CHECKSUM_ERROR);
+static OneWireSInterface slaveInterface(Serial, INSTRUCTION_ERROR, CHECKSUM_ERROR);
 static SensorMgr sensorMgr(registers);
 bool running;
 bool f_reset_requested;
