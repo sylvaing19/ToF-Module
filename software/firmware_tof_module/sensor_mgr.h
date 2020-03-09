@@ -13,7 +13,8 @@
 class SensorMgr
 {
 public:
-    SensorMgr(RegisterStorage &aRegisterStorage);
+    SensorMgr(RegisterStorage &aRegisterStorage,
+        Stream *errStream = nullptr);
 
     void begin();
     void end();

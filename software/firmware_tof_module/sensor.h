@@ -13,7 +13,7 @@ public:
         uint8_t aResetPin, uint8_t aRegEnabled, uint8_t aRegMinRange,
         uint8_t aRegMaxRange, uint8_t aRegQualityThreshold, uint8_t aRegPeriod,
         uint8_t aRegPolling, uint8_t aRegMeasureCount, uint8_t aRegRange,
-        uint8_t aRegRawRange, uint8_t aRegQuality);
+        uint8_t aRegRawRange, uint8_t aRegQuality, Stream *errStream = nullptr);
 
     void begin();
     void end();
@@ -45,6 +45,8 @@ private:
     const uint8_t mRegRange;
     const uint8_t mRegRawRange;
     const uint8_t mRegQuality;
+
+    Stream *mErrorStream;
 };
 
 

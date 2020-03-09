@@ -14,6 +14,7 @@
 #include "utils.h"
 #include <SoftwareSerial.h>
 
+#define DEBUG 1
 #define INPUT_VOLTAGE_UPDATE_PERIOD 10000 // ms
 
 
@@ -26,11 +27,17 @@ enum ErrCode
     INSTRUCTION_ERROR = 64,
 };
 
-
-SoftwareSerial debug(10, 11);
+#if DEBUG
+SoftwareSerial debug(PIN_DEBUG_C, PIN_DEBUG_D);
+#endif
 static RegisterStorage registers(RANGE_ERROR);
-static OneWireSInterface slaveInterface(Serial, INSTRUCTION_ERROR, CHECKSUM_ERROR);
+#if DEBUG
+static OneWireSInterface slaveInterface(Serial, INSTRUCTION_ERROR, CHECKSUM_ERROR, OneWireInterface::NO_DIR_PORT, &debug);
+static SensorMgr sensorMgr(registers, &debug);
+#else
+static OneWireSInterface slaveInterface(Serial, INSTRUCTION_ERROR, CHECKSUM_ERROR, OneWireInterface::NO_DIR_PORT);
 static SensorMgr sensorMgr(registers);
+#endif
 bool running;
 bool f_reset_requested;
 
@@ -53,39 +60,53 @@ uint8_t write(uint8_t address, uint8_t size, const uint8_t *data)
 
 void factory_reset()
 {
+#if DEBUG
     debug.println("factory reset");
+#endif
     f_reset_requested = true;
     running = false;
 }
 
 void soft_reset()
 {
+#if DEBUG
     debug.println("soft reset");
+#endif
     running = false;
 }
 
 void main_sensor_ready()
 {
+#if DEBUG
     static bool led_state = false;
     led_state = !led_state;
     digitalWrite(PIN_DEBUG_A, led_state);
+#endif
 
     sensorMgr.mainSensorReady();
 }
 
 void aux_sensor_ready()
 {
+#if DEBUG
     static bool led_state = false;
     led_state = !led_state;
     digitalWrite(PIN_DEBUG_B, led_state);
+#endif
 
     sensorMgr.auxSensorReady();
 }
 
 void setup()
 {
+#if DEBUG
     debug.begin(115200);
     debug.println("Debug serial");
+    pinMode(PIN_DEBUG_A, OUTPUT);
+    pinMode(PIN_DEBUG_B, OUTPUT);
+    pinMode(LED_BUILTIN, OUTPUT);
+    digitalWrite(LED_BUILTIN, LOW);
+#endif
     slaveInterface.setReadCallback(read);
     slaveInterface.setWriteCallback(write);
     slaveInterface.setSoftResetCallback(soft_reset);
@@ -94,10 +115,6 @@ void setup()
     pinMode(AUX_SENSOR_INT_PIN, INPUT);
     attachInterrupt(0, main_sensor_ready, FALLING);
     attachInterrupt(1, aux_sensor_ready, FALLING);
-    pinMode(PIN_DEBUG_A, OUTPUT);
-    pinMode(PIN_DEBUG_B, OUTPUT);
-    pinMode(LED_BUILTIN, OUTPUT);
-    digitalWrite(LED_BUILTIN, LOW);
 }
 
 void loop()
@@ -113,6 +130,7 @@ void loop()
     slaveInterface.setRDT((uint32_t)registers.getReturnDelayTime() * 2);
     slaveInterface.setSRL(registers.getStatusReturnLevel());
 
+#if DEBUG
     debug.println("Registers:");
     uint8_t d[51];
     registers.read(0, 51, d);
@@ -122,6 +140,7 @@ void loop()
         debug.println(d[i]);
     }
     debug.println("-end-");
+#endif
 
     while (running) {
         /* Input voltage update */
@@ -136,14 +155,6 @@ void loop()
         /* Sensors update */
         sensorMgr.update();
         slaveInterface.setHardwareStatus(sensorMgr.status());
-
-        //uint8_t mcslr = -1;
-        //uint16_t range = -1;
-        //registers.read(REG_MAIN_MCSLR, mcslr);
-        //registers.read(REG_MAIN_RANGE, range);
-        //debug.print(mcslr);
-        //debug.print("\t");
-        //debug.println(range);
 
         /* Communication with master */
         slaveInterface.communicate();
@@ -165,6 +176,7 @@ void loop()
             }
         }
 
+#if DEBUG
         static uint32_t led_timer = 0;
         static bool led_state = false;
         if (now - led_timer > 500) {
@@ -172,6 +184,7 @@ void loop()
             led_state = !led_state;
             digitalWrite(LED_BUILTIN, led_state);
         }
+#endif
 
     }
     slaveInterface.end();

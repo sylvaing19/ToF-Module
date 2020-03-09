@@ -4,7 +4,7 @@
 /* Format: one digit "main", two digits "sub"
  * Maximum value: 255 (v2.55)
  */
-#define FIRMWARE_VERSION 001 // v0.1
+#define FIRMWARE_VERSION 002 // v0.2
 
 /* Device model number */
 #define MODEL_NB_LW 0xB5

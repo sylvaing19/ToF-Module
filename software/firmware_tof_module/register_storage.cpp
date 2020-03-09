@@ -7,7 +7,7 @@
 #define MAGIC_DATA_0 35
 #define MAGIC_DATA_1 78
 #define MAGIC_DATA_2 149
-#define MAGIC_DATA_3 39
+#define MAGIC_DATA_3 42
 
 
 RegisterStorage::RegisterStorage(uint8_t aRangeErrorCode) :
@@ -325,7 +325,7 @@ uint8_t RegisterStorage::eeprom_default[EEPROM_AREA_SIZE] = {
     FIRMWARE_VERSION, // REG_FIRMWARE_VERSION = 0x02
 
     1, // REG_ID = 0x03
-    4, // REG_BAUDRATE = 0x04
+    9, // REG_BAUDRATE = 0x04
     250, // REG_RETURN_DELAY_TIME = 0x05
     2, // REG_STATUS_RETURN_LEVEL = 0x06
 
@@ -352,8 +352,8 @@ uint8_t RegisterStorage::eeprom_default[EEPROM_AREA_SIZE] = {
     0x00,
 
     1, // REG_AUTO_START = 0x1B
-    0, // REG_MAIN_POLLING = 0x1C
-    0, // REG_AUX_POLLING = 0x1D
+    1, // REG_MAIN_POLLING = 0x1C
+    1, // REG_AUX_POLLING = 0x1D
 
     0, // Reserved (0x1E - 0x1F)
     0,

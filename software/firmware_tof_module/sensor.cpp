@@ -7,25 +7,28 @@
  */
 #define PERIOD_FAULT_TIMER 3
 #define MINIMAL_FAULT_TIMER 100 // ms
+#define DEBUG_MEASUREMENTS 0 // set to 1 to print all measurements on mErrorStream
 
 Sensor::Sensor(RegisterStorage & aRegisterStorage, uint8_t aIndex,
     uint8_t aAddress, uint8_t aResetPin, uint8_t aRegEnabled,
     uint8_t aRegMinRange, uint8_t aRegMaxRange, uint8_t aRegQualityThreshold,
     uint8_t aRegPeriod, uint8_t aRegPolling, uint8_t aRegMeasureCount,
-    uint8_t aRegRange, uint8_t aRegRawRange, uint8_t aRegQuality) :
-    mRegisters(aRegisterStorage),
-    mSensor(aAddress, aResetPin),
-    mIndex(aIndex),
-    mRegEnabled(aRegEnabled),
-    mRegMinRange(aRegMinRange),
-    mRegMaxRange(aRegMaxRange),
-    mRegQualityThreshold(aRegQualityThreshold),
-    mRegPeriod(aRegPeriod),
-    mRegPolling(aRegPolling),
-    mRegMeasureCount(aRegMeasureCount),
-    mRegRange(aRegRange),
-    mRegRawRange(aRegRawRange),
-    mRegQuality(aRegQuality)
+    uint8_t aRegRange, uint8_t aRegRawRange, uint8_t aRegQuality,
+    Stream *errStream) :
+        mRegisters(aRegisterStorage),
+        mSensor(aAddress, aResetPin),
+        mIndex(aIndex),
+        mRegEnabled(aRegEnabled),
+        mRegMinRange(aRegMinRange),
+        mRegMaxRange(aRegMaxRange),
+        mRegQualityThreshold(aRegQualityThreshold),
+        mRegPeriod(aRegPeriod),
+        mRegPolling(aRegPolling),
+        mRegMeasureCount(aRegMeasureCount),
+        mRegRange(aRegRange),
+        mRegRawRange(aRegRawRange),
+        mRegQuality(aRegQuality),
+        mErrorStream(errStream)
 {
     mStatus = 0;
     end();
@@ -40,6 +43,11 @@ void Sensor::begin()
         mRegisters.read(REG_WIRING_STATUS, wiringStatus);
         wiringStatus |= (1 << mIndex);
         mRegisters.writeRAM(REG_WIRING_STATUS, wiringStatus);
+    }
+    else if (mErrorStream) {
+        mErrorStream->print("Sensor #");
+        mErrorStream->print(mIndex);
+        mErrorStream->println(" not wired.");
     }
     uint8_t auto_start;
     mRegisters.read(REG_AUTO_START, auto_start);
@@ -96,7 +104,13 @@ void Sensor::update()
     if (now - mLastMeasureTime > 
             max(PERIOD_FAULT_TIMER * period, MINIMAL_FAULT_TIMER)) {
         mStatus = (1 << mIndex);
+        if (mErrorStream) {
+            mErrorStream->print("Sensor #");
+            mErrorStream->print(mIndex);
+            mErrorStream->println(" not responding.");
+        }
         end();
+        begin();
         return;
     }
 
@@ -130,6 +144,13 @@ void Sensor::update()
     mRegisters.writeRAM(mRegRange, (uint16_t)range);
     mRegisters.writeRAM(mRegRawRange, rawRange);
     mRegisters.writeRAM(mRegQuality, quality);
+
+#if DEBUG_MEASUREMENTS
+    if (mErrorStream) {
+        mErrorStream->print("D=");
+        mErrorStream->println((uint16_t)range);
+    }
+#endif
 }
 
 void Sensor::resetMeasureCount()

@@ -6,15 +6,17 @@
 #define AUX_SENSOR_PIN 5
 
 
-SensorMgr::SensorMgr(RegisterStorage & aRegisterStorage) :
+SensorMgr::SensorMgr(RegisterStorage &aRegisterStorage, Stream *errStream) :
     mainSensor(aRegisterStorage, 0, MAIN_SENSOR_ADDR, MAIN_SENSOR_PIN,
         REG_MAIN_ENABLED, REG_MAIN_MIN_RANGE, REG_MAIN_MAX_RANGE,
         REG_MAIN_QUALITY_THRESHOLD, REG_MAIN_PERIOD, REG_MAIN_POLLING,
-        REG_MAIN_MCSLR, REG_MAIN_RANGE, REG_MAIN_RAW_RANGE, REG_MAIN_QUALITY),
+        REG_MAIN_MCSLR, REG_MAIN_RANGE, REG_MAIN_RAW_RANGE, REG_MAIN_QUALITY,
+        errStream),
     auxSensor(aRegisterStorage, 1, AUX_SENSOR_ADDR, AUX_SENSOR_PIN,
         REG_AUX_ENABLED, REG_AUX_MIN_RANGE, REG_AUX_MAX_RANGE,
         REG_AUX_QUALITY_THRESHOLD, REG_AUX_PERIOD, REG_AUX_POLLING,
-        REG_AUX_MCSLR, REG_AUX_RANGE, REG_AUX_RAW_RANGE, REG_AUX_QUALITY)
+        REG_AUX_MCSLR, REG_AUX_RANGE, REG_AUX_RAW_RANGE, REG_AUX_QUALITY,
+        errStream)
 {
     Wire.begin();
     end();
