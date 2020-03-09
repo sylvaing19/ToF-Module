@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.4.2">
+<eagle version="9.5.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -30,8 +30,8 @@
 <layer number="20" name="Dimension" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
@@ -155,6 +155,7 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyYjVjZTIy" projecturn="a.cGVyc29uYWw6dWUyYjVjZTIyIzIwMTkwOTI4MjIwMDY0MjI2" f3durn="urn:adsk.wipprod:dm.lineage:yrwYV_1PShycd7WO6k89jA" pcbguid="c1876e86-a3e6-455e-abad-271dae1e82be" lastpulledtime="" lastsyncedchangeguid="c99dd89f-3568-a070-53e0-c9ec014c2cc2"/>
 <plain>
 <wire x1="0" y1="0" x2="23" y2="0" width="0" layer="20"/>
 <wire x1="23" y1="0" x2="23" y2="18" width="0" layer="20"/>
@@ -185,27 +186,6 @@ v1 08-2019</text>
 <text x="11.4" y="0.4" size="1" layer="22" rot="MR0" align="bottom-center">D</text>
 </plain>
 <libraries>
-<library name="con-jst" urn="urn:adsk.eagle:library:156">
-<packages>
-<package name="GH-03-V">
-<smd name="1" x="-1.25" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
-<smd name="2" x="0" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
-<smd name="CASE0" x="3.1" y="-0.85" dx="2.8" dy="1" layer="1" rot="R90"/>
-<smd name="CASE1" x="-3.1" y="-0.85" dx="2.8" dy="1" layer="1" rot="R90"/>
-<wire x1="-3.75" y1="-1.95" x2="-2.5" y2="-1.95" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-1.95" x2="2.5" y2="-1.95" width="0.127" layer="21"/>
-<wire x1="2.5" y1="-1.95" x2="3.75" y2="-1.95" width="0.127" layer="21"/>
-<wire x1="3.75" y1="-1.95" x2="3.75" y2="2.5" width="0.127" layer="21"/>
-<wire x1="3.75" y1="2.5" x2="-3.75" y2="2.5" width="0.127" layer="21"/>
-<wire x1="-3.75" y1="2.5" x2="-3.75" y2="-1.95" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-1.95" x2="-2.5" y2="-1.25" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-1.25" x2="2.5" y2="-1.25" width="0.127" layer="21"/>
-<wire x1="2.5" y1="-1.25" x2="2.5" y2="-1.95" width="0.127" layer="21"/>
-<smd name="3" x="1.25" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
-<text x="0" y="-2.159" size="1.778" layer="25" rot="R180" align="bottom-center">&gt;NAME</text>
-</package>
-</packages>
-</library>
 <library name="pinhead" urn="urn:adsk.eagle:library:325">
 <description>&lt;b&gt;Pin Header Connectors&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
@@ -383,30 +363,6 @@ v1 08-2019</text>
 </packageinstances>
 </package3d>
 </packages3d>
-</library>
-<library name="st-vl-sensor">
-<packages>
-<package name="VL53L0X">
-<smd name="1" x="1.6" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="2" x="0.8" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="3" x="0" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="4" x="-0.8" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="5" x="-1.6" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="6" x="-1.6" y="0" dx="0.5" dy="0.5" layer="1"/>
-<smd name="7" x="-1.6" y="0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="8" x="-0.8" y="0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="9" x="0" y="0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="10" x="0.8" y="0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="11" x="1.6" y="0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="12" x="1.6" y="0" dx="0.5" dy="0.5" layer="1"/>
-<wire x1="-2.2" y1="1.2" x2="2.2" y2="1.2" width="0.127" layer="21"/>
-<wire x1="2.2" y1="1.2" x2="2.2" y2="-1.2" width="0.127" layer="21"/>
-<wire x1="2.2" y1="-1.2" x2="-2.2" y2="-1.2" width="0.127" layer="21"/>
-<wire x1="-2.2" y1="-1.2" x2="-2.2" y2="1.2" width="0.127" layer="21"/>
-<text x="-2.4" y="0" size="0.6096" layer="25" rot="R270" align="top-center">&gt;NAME</text>
-<circle x="2.2" y="-1.2" radius="0.5" width="0" layer="21"/>
-</package>
-</packages>
 </library>
 <library name="testpad" urn="urn:adsk.eagle:library:385">
 <description>&lt;b&gt;Test Pins/Pads&lt;/b&gt;&lt;p&gt;
@@ -1611,6 +1567,65 @@ Source: RS Component / BUORNS</description>
 </package3d>
 </packages3d>
 </library>
+<library name="con-jst" urn="urn:adsk.eagle:library:15617703">
+<packages>
+<package name="GH-03-V" urn="urn:adsk.eagle:footprint:15617714/1" library_version="2">
+<smd name="1" x="-1.25" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
+<smd name="2" x="0" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
+<smd name="CASE0" x="3.1" y="-0.85" dx="2.8" dy="1" layer="1" rot="R90"/>
+<smd name="CASE1" x="-3.1" y="-0.85" dx="2.8" dy="1" layer="1" rot="R90"/>
+<smd name="3" x="1.25" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
+<wire x1="-3.75" y1="-1.95" x2="-2.5" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="-1.95" x2="2.5" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="2.5" y1="-1.95" x2="3.75" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="3.75" y1="-1.95" x2="3.75" y2="2.5" width="0.127" layer="21"/>
+<wire x1="3.75" y1="2.5" x2="-3.75" y2="2.5" width="0.127" layer="21"/>
+<wire x1="-3.75" y1="2.5" x2="-3.75" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="-1.95" x2="-2.5" y2="-1.25" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="-1.25" x2="2.5" y2="-1.25" width="0.127" layer="21"/>
+<wire x1="2.5" y1="-1.25" x2="2.5" y2="-1.95" width="0.127" layer="21"/>
+<text x="0" y="-2.159" size="1.778" layer="25" rot="R180" align="bottom-center">&gt;NAME</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="GH-03-V" urn="urn:adsk.eagle:package:15617734/2" type="model" library_version="2">
+<packageinstances>
+<packageinstance name="GH-03-V"/>
+</packageinstances>
+</package3d>
+</packages3d>
+</library>
+<library name="st-vl-sensor" urn="urn:adsk.eagle:library:15619648">
+<packages>
+<package name="VL53L0X" urn="urn:adsk.eagle:footprint:15619650/1" library_version="2">
+<smd name="1" x="1.6" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="2" x="0.8" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="3" x="0" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="4" x="-0.8" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="5" x="-1.6" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="6" x="-1.6" y="0" dx="0.5" dy="0.5" layer="1"/>
+<smd name="7" x="-1.6" y="0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="8" x="-0.8" y="0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="9" x="0" y="0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="10" x="0.8" y="0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="11" x="1.6" y="0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="12" x="1.6" y="0" dx="0.5" dy="0.5" layer="1"/>
+<wire x1="-2.2" y1="1.2" x2="2.2" y2="1.2" width="0.127" layer="21"/>
+<wire x1="2.2" y1="1.2" x2="2.2" y2="-1.2" width="0.127" layer="21"/>
+<wire x1="2.2" y1="-1.2" x2="-2.2" y2="-1.2" width="0.127" layer="21"/>
+<wire x1="-2.2" y1="-1.2" x2="-2.2" y2="1.2" width="0.127" layer="21"/>
+<text x="-2.4" y="0" size="0.6096" layer="25" rot="R270" align="top-center">&gt;NAME</text>
+<circle x="2.2" y="-1.2" radius="0.5" width="0" layer="21"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="VL53L0X" urn="urn:adsk.eagle:package:15619656/2" type="model" library_version="2">
+<packageinstances>
+<packageinstance name="VL53L0X"/>
+</packageinstances>
+</package3d>
+</packages3d>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1806,10 +1821,10 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="CON1" library="con-jst" library_urn="urn:adsk.eagle:library:156" package="GH-03-V" value="JST-03" x="2.8" y="5" smashed="yes" rot="MR90">
+<element name="CON1" library="con-jst" library_urn="urn:adsk.eagle:library:15617703" package="GH-03-V" package3d_urn="urn:adsk.eagle:package:15617734/2" value="JST-03" x="2.8" y="5" smashed="yes" rot="MR90">
 <attribute name="NAME" x="2.8" y="5" size="1" layer="26" rot="MR270" align="bottom-center"/>
 </element>
-<element name="CON2" library="con-jst" library_urn="urn:adsk.eagle:library:156" package="GH-03-V" value="JST-03" x="2.8" y="13" smashed="yes" rot="MR90">
+<element name="CON2" library="con-jst" library_urn="urn:adsk.eagle:library:15617703" package="GH-03-V" package3d_urn="urn:adsk.eagle:package:15617734/2" value="JST-03" x="2.8" y="13" smashed="yes" rot="MR90">
 <attribute name="NAME" x="2.8" y="13" size="1" layer="26" rot="MR270" align="bottom-center"/>
 </element>
 <element name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" package="2X03" package3d_urn="urn:adsk.eagle:package:22462/2" value="ICSP" x="8.9" y="9" smashed="yes" rot="MR90">
@@ -1836,7 +1851,7 @@ design rules under a new name.</description>
 <attribute name="MOUSER" value="81-CSTNE8M00GH5C000R" x="21" y="3.5" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="21" y="1.6" size="1" layer="25" align="top-center"/>
 </element>
-<element name="VL1" library="st-vl-sensor" package="VL53L0X" value="VL53L0X" x="21" y="9" smashed="yes" rot="R90">
+<element name="VL1" library="st-vl-sensor" library_urn="urn:adsk.eagle:library:15619648" package="VL53L0X" package3d_urn="urn:adsk.eagle:package:15619656/2" value="VL53L0X" x="21" y="9" smashed="yes" rot="R90">
 <attribute name="MANF" value="VL53L0CXV0DH/1" x="21" y="9" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MOUSER" value="511-VL53L0CXV0DH/1" x="21" y="9" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="21" y="6.6" size="1" layer="25" align="top-center"/>
@@ -2090,6 +2105,35 @@ design rules under a new name.</description>
 <contactref element="U1" pad="21"/>
 <wire x1="15.65" y1="12" x2="15.45" y2="11.8" width="0.1524" layer="1"/>
 <wire x1="15.45" y1="11.8" x2="15" y2="11.8" width="0.1524" layer="1"/>
+<wire x1="19.65" y1="15.1" x2="18.5" y2="15.5" width="0" layer="19" extent="1-1"/>
+<wire x1="19.65" y1="13" x2="19.65" y2="15.1" width="0" layer="19" extent="1-1"/>
+<wire x1="16.5" y1="16.2644" x2="18.5" y2="15.5" width="0" layer="19" extent="1-1"/>
+<wire x1="14.6" y1="15.5" x2="16.5" y2="16.2644" width="0" layer="19" extent="1-1"/>
+<wire x1="13.5" y1="15.85" x2="14.6" y2="15.5" width="0" layer="19" extent="1-1"/>
+<wire x1="21" y1="10.6" x2="19.65" y2="13" width="0" layer="19" extent="1-1"/>
+<wire x1="21.1813" y1="10.2" x2="21" y2="10.6" width="0" layer="19" extent="1-16"/>
+<wire x1="21.8" y1="9.8" x2="21.1813" y2="10.2" width="0" layer="19" extent="1-16"/>
+<wire x1="21.8" y1="9" x2="21.8" y2="9.8" width="0" layer="19" extent="1-1"/>
+<wire x1="21.1813" y1="8.6" x2="21.8" y2="9" width="0" layer="19" extent="1-16"/>
+<wire x1="21" y1="8.6" x2="21.1813" y2="8.6" width="0" layer="19" extent="16-16"/>
+<wire x1="21.8" y1="8.2" x2="21.1813" y2="8.6" width="0" layer="19" extent="1-16"/>
+<wire x1="21" y1="7.4" x2="21.8" y2="8.2" width="0" layer="19" extent="1-1"/>
+<wire x1="15.65" y1="12" x2="14.6" y2="15.5" width="0" layer="19" extent="1-1"/>
+<wire x1="12.8187" y1="9.4" x2="15" y2="11.8" width="0" layer="19" extent="16-16"/>
+<wire x1="21" y1="3.5" x2="21" y2="7.4" width="0" layer="19" extent="1-1"/>
+<wire x1="19.2" y1="2.4" x2="21" y2="3.5" width="0" layer="19" extent="1-1"/>
+<wire x1="17.15" y1="4.5" x2="19.2" y2="2.4" width="0" layer="19" extent="1-1"/>
+<wire x1="16.2" y1="3.5" x2="17.15" y2="4.5" width="0" layer="19" extent="1-1"/>
+<wire x1="14.95" y1="4.5" x2="16.2" y2="3.5" width="0" layer="19" extent="1-1"/>
+<wire x1="11.8" y1="2.6" x2="14.95" y2="4.5" width="0" layer="19" extent="1-1"/>
+<wire x1="8.5" y1="2.5" x2="11.8" y2="2.6" width="0" layer="19" extent="1-1"/>
+<wire x1="5.3" y1="3.75" x2="8.5" y2="2.5" width="0" layer="19" extent="16-16"/>
+<wire x1="3.1" y1="6.1" x2="5.3" y2="3.75" width="0" layer="19" extent="16-16"/>
+<wire x1="6.1" y1="10.3" x2="10.17" y2="11.54" width="0" layer="19" extent="1-1"/>
+<wire x1="5.3" y1="11.75" x2="6.1" y2="10.3" width="0" layer="19" extent="16-16"/>
+<wire x1="3.9" y1="12" x2="5.3" y2="11.75" width="0" layer="19" extent="16-16"/>
+<wire x1="2.8" y1="12.8" x2="3.9" y2="12" width="0" layer="19" extent="1-1"/>
+<wire x1="8.5" y1="15.5" x2="10.17" y2="11.54" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="DATA">
 <contactref element="CON1" pad="3"/>
@@ -2402,6 +2446,11 @@ which will not be processed correctly with this version.
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)
 with this version.
+</note>
+<note version="8.3" severity="warning">
+Since Version 8.3, EAGLE supports Fusion synchronisation.
+This feature will not be available in this version and saving
+the document will break the link to the Fusion PCB feature.
 </note>
 <note version="8.3" severity="warning">
 Since Version 8.3, EAGLE supports URNs for individual library

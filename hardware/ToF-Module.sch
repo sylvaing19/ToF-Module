@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.4.2">
+<eagle version="9.5.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -161,58 +161,6 @@ DIN A4, landscape with location and doc. field</description>
 </gates>
 <devices>
 <device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
-<library name="con-jst" urn="urn:adsk.eagle:library:156">
-<packages>
-<package name="GH-03-V">
-<smd name="1" x="-1.25" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
-<smd name="2" x="0" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
-<smd name="CASE0" x="3.1" y="-0.85" dx="2.8" dy="1" layer="1" rot="R90"/>
-<smd name="CASE1" x="-3.1" y="-0.85" dx="2.8" dy="1" layer="1" rot="R90"/>
-<wire x1="-3.75" y1="-1.95" x2="-2.5" y2="-1.95" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-1.95" x2="2.5" y2="-1.95" width="0.127" layer="21"/>
-<wire x1="2.5" y1="-1.95" x2="3.75" y2="-1.95" width="0.127" layer="21"/>
-<wire x1="3.75" y1="-1.95" x2="3.75" y2="2.5" width="0.127" layer="21"/>
-<wire x1="3.75" y1="2.5" x2="-3.75" y2="2.5" width="0.127" layer="21"/>
-<wire x1="-3.75" y1="2.5" x2="-3.75" y2="-1.95" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-1.95" x2="-2.5" y2="-1.25" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-1.25" x2="2.5" y2="-1.25" width="0.127" layer="21"/>
-<wire x1="2.5" y1="-1.25" x2="2.5" y2="-1.95" width="0.127" layer="21"/>
-<smd name="3" x="1.25" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
-<text x="0" y="-2.159" size="1.778" layer="25" rot="R180" align="bottom-center">&gt;NAME</text>
-</package>
-</packages>
-<symbols>
-<symbol name="JST-03">
-<pin name="1" x="-5.08" y="0" visible="pin" length="short"/>
-<pin name="2" x="-5.08" y="-2.54" visible="pin" length="short"/>
-<wire x1="-2.54" y1="2.54" x2="2.54" y2="2.54" width="0.254" layer="94"/>
-<wire x1="2.54" y1="2.54" x2="2.54" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-7.62" x2="-2.54" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="-7.62" x2="-2.54" y2="2.54" width="0.254" layer="94"/>
-<pin name="3" x="-5.08" y="-5.08" visible="pin" length="short"/>
-<text x="-3.048" y="2.794" size="1.778" layer="95">&gt;NAME</text>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="JST-03" prefix="CON">
-<gates>
-<gate name="G$1" symbol="JST-03" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="GH-03-V">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-<connect gate="G$1" pin="3" pad="3"/>
-</connects>
 <technologies>
 <technology name=""/>
 </technologies>
@@ -748,71 +696,6 @@ DIN A4, landscape with location and doc. field</description>
 <technology name="">
 <attribute name="MANF" value="CSTNE8M00"/>
 <attribute name="MOUSER" value="81-CSTNE8M00GH5C000R" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
-<library name="st-vl-sensor">
-<packages>
-<package name="VL53L0X">
-<smd name="1" x="1.6" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="2" x="0.8" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="3" x="0" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="4" x="-0.8" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="5" x="-1.6" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="6" x="-1.6" y="0" dx="0.5" dy="0.5" layer="1"/>
-<smd name="7" x="-1.6" y="0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="8" x="-0.8" y="0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="9" x="0" y="0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="10" x="0.8" y="0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="11" x="1.6" y="0.8" dx="0.5" dy="0.5" layer="1"/>
-<smd name="12" x="1.6" y="0" dx="0.5" dy="0.5" layer="1"/>
-<wire x1="-2.2" y1="1.2" x2="2.2" y2="1.2" width="0.127" layer="21"/>
-<wire x1="2.2" y1="1.2" x2="2.2" y2="-1.2" width="0.127" layer="21"/>
-<wire x1="2.2" y1="-1.2" x2="-2.2" y2="-1.2" width="0.127" layer="21"/>
-<wire x1="-2.2" y1="-1.2" x2="-2.2" y2="1.2" width="0.127" layer="21"/>
-<text x="-2.4" y="0" size="0.6096" layer="25" rot="R270" align="top-center">&gt;NAME</text>
-<circle x="2.2" y="-1.2" radius="0.5" width="0" layer="21"/>
-</package>
-</packages>
-<symbols>
-<symbol name="VL53L0X">
-<pin name="SDA" x="-15.24" y="5.08" visible="pin" length="middle"/>
-<pin name="SCL" x="-15.24" y="2.54" visible="pin" length="middle"/>
-<pin name="XSHUT" x="-15.24" y="-2.54" visible="pin" length="middle"/>
-<pin name="GPIO1" x="-15.24" y="-5.08" visible="pin" length="middle"/>
-<pin name="VDD" x="15.24" y="5.08" visible="pin" length="middle" rot="R180"/>
-<pin name="GND" x="15.24" y="-5.08" visible="pin" length="middle" rot="R180"/>
-<wire x1="-10.16" y1="7.62" x2="10.16" y2="7.62" width="0.254" layer="94"/>
-<wire x1="10.16" y1="7.62" x2="10.16" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-7.62" x2="-10.16" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-7.62" x2="-10.16" y2="7.62" width="0.254" layer="94"/>
-<text x="0" y="7.112" size="1.016" layer="94" align="top-center">VL53L0X</text>
-<text x="-10.16" y="-8.128" size="1.778" layer="95" align="top-left">&gt;NAME</text>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="VL53L0X" prefix="VL">
-<gates>
-<gate name="G$1" symbol="VL53L0X" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="VL53L0X">
-<connects>
-<connect gate="G$1" pin="GND" pad="2 3 4 6 12"/>
-<connect gate="G$1" pin="GPIO1" pad="7"/>
-<connect gate="G$1" pin="SCL" pad="10"/>
-<connect gate="G$1" pin="SDA" pad="9"/>
-<connect gate="G$1" pin="VDD" pad="1 11"/>
-<connect gate="G$1" pin="XSHUT" pad="5"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="MANF" value="VL53L0CXV0DH/1"/>
-<attribute name="MOUSER" value="511-VL53L0CXV0DH/1" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -6936,6 +6819,143 @@ Source: RS Component / Phycomp</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="con-jst" urn="urn:adsk.eagle:library:15617703">
+<packages>
+<package name="GH-03-V" urn="urn:adsk.eagle:footprint:15617714/1" library_version="2">
+<smd name="1" x="-1.25" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
+<smd name="2" x="0" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
+<smd name="CASE0" x="3.1" y="-0.85" dx="2.8" dy="1" layer="1" rot="R90"/>
+<smd name="CASE1" x="-3.1" y="-0.85" dx="2.8" dy="1" layer="1" rot="R90"/>
+<smd name="3" x="1.25" y="2.5" dx="1.7" dy="0.6" layer="1" rot="R90"/>
+<wire x1="-3.75" y1="-1.95" x2="-2.5" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="-1.95" x2="2.5" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="2.5" y1="-1.95" x2="3.75" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="3.75" y1="-1.95" x2="3.75" y2="2.5" width="0.127" layer="21"/>
+<wire x1="3.75" y1="2.5" x2="-3.75" y2="2.5" width="0.127" layer="21"/>
+<wire x1="-3.75" y1="2.5" x2="-3.75" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="-1.95" x2="-2.5" y2="-1.25" width="0.127" layer="21"/>
+<wire x1="-2.5" y1="-1.25" x2="2.5" y2="-1.25" width="0.127" layer="21"/>
+<wire x1="2.5" y1="-1.25" x2="2.5" y2="-1.95" width="0.127" layer="21"/>
+<text x="0" y="-2.159" size="1.778" layer="25" rot="R180" align="bottom-center">&gt;NAME</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="GH-03-V" urn="urn:adsk.eagle:package:15617734/2" type="model" library_version="2">
+<packageinstances>
+<packageinstance name="GH-03-V"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="JST-03" urn="urn:adsk.eagle:symbol:15617723/1" library_version="2">
+<pin name="1" x="-5.08" y="0" visible="pin" length="short"/>
+<pin name="2" x="-5.08" y="-2.54" visible="pin" length="short"/>
+<pin name="3" x="-5.08" y="-5.08" visible="pin" length="short"/>
+<wire x1="-2.54" y1="2.54" x2="2.54" y2="2.54" width="0.254" layer="94"/>
+<wire x1="2.54" y1="2.54" x2="2.54" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-7.62" x2="-2.54" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-7.62" x2="-2.54" y2="2.54" width="0.254" layer="94"/>
+<text x="-3.048" y="2.794" size="1.778" layer="95">&gt;NAME</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="JST-03" urn="urn:adsk.eagle:component:15617743/2" prefix="CON" library_version="2">
+<gates>
+<gate name="G$1" symbol="JST-03" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="GH-03-V">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:15617734/2"/>
+</package3dinstances>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+<library name="st-vl-sensor" urn="urn:adsk.eagle:library:15619648">
+<packages>
+<package name="VL53L0X" urn="urn:adsk.eagle:footprint:15619650/1" library_version="2">
+<smd name="1" x="1.6" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="2" x="0.8" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="3" x="0" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="4" x="-0.8" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="5" x="-1.6" y="-0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="6" x="-1.6" y="0" dx="0.5" dy="0.5" layer="1"/>
+<smd name="7" x="-1.6" y="0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="8" x="-0.8" y="0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="9" x="0" y="0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="10" x="0.8" y="0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="11" x="1.6" y="0.8" dx="0.5" dy="0.5" layer="1"/>
+<smd name="12" x="1.6" y="0" dx="0.5" dy="0.5" layer="1"/>
+<wire x1="-2.2" y1="1.2" x2="2.2" y2="1.2" width="0.127" layer="21"/>
+<wire x1="2.2" y1="1.2" x2="2.2" y2="-1.2" width="0.127" layer="21"/>
+<wire x1="2.2" y1="-1.2" x2="-2.2" y2="-1.2" width="0.127" layer="21"/>
+<wire x1="-2.2" y1="-1.2" x2="-2.2" y2="1.2" width="0.127" layer="21"/>
+<text x="-2.4" y="0" size="0.6096" layer="25" rot="R270" align="top-center">&gt;NAME</text>
+<circle x="2.2" y="-1.2" radius="0.5" width="0" layer="21"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="VL53L0X" urn="urn:adsk.eagle:package:15619656/2" type="model" library_version="2">
+<packageinstances>
+<packageinstance name="VL53L0X"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="VL53L0X" urn="urn:adsk.eagle:symbol:15619653/1" library_version="2">
+<pin name="SDA" x="-15.24" y="5.08" visible="pin" length="middle"/>
+<pin name="SCL" x="-15.24" y="2.54" visible="pin" length="middle"/>
+<pin name="XSHUT" x="-15.24" y="-2.54" visible="pin" length="middle"/>
+<pin name="GPIO1" x="-15.24" y="-5.08" visible="pin" length="middle"/>
+<pin name="VDD" x="15.24" y="5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="GND" x="15.24" y="-5.08" visible="pin" length="middle" rot="R180"/>
+<wire x1="-10.16" y1="7.62" x2="10.16" y2="7.62" width="0.254" layer="94"/>
+<wire x1="10.16" y1="7.62" x2="10.16" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-7.62" x2="-10.16" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-7.62" x2="-10.16" y2="7.62" width="0.254" layer="94"/>
+<text x="0" y="7.112" size="1.016" layer="94" align="top-center">VL53L0X</text>
+<text x="-10.16" y="-8.128" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="VL53L0X" urn="urn:adsk.eagle:component:15619659/2" prefix="VL" library_version="2">
+<gates>
+<gate name="G$1" symbol="VL53L0X" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="VL53L0X">
+<connects>
+<connect gate="G$1" pin="GND" pad="2 3 4 6 12"/>
+<connect gate="G$1" pin="GPIO1" pad="7"/>
+<connect gate="G$1" pin="SCL" pad="10"/>
+<connect gate="G$1" pin="SDA" pad="9"/>
+<connect gate="G$1" pin="VDD" pad="1 11"/>
+<connect gate="G$1" pin="XSHUT" pad="5"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:15619656/2"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MANF" value="VL53L0CXV0DH/1"/>
+<attribute name="MOUSER" value="511-VL53L0CXV0DH/1" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -6947,14 +6967,14 @@ Source: RS Component / Phycomp</description>
 </classes>
 <parts>
 <part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A4L-LOC" device="" value="Frame1"/>
-<part name="CON1" library="con-jst" library_urn="urn:adsk.eagle:library:156" deviceset="JST-03" device=""/>
-<part name="CON2" library="con-jst" library_urn="urn:adsk.eagle:library:156" deviceset="JST-03" device=""/>
+<part name="CON1" library="con-jst" library_urn="urn:adsk.eagle:library:15617703" deviceset="JST-03" device="" package3d_urn="urn:adsk.eagle:package:15617734/2"/>
+<part name="CON2" library="con-jst" library_urn="urn:adsk.eagle:library:15617703" deviceset="JST-03" device="" package3d_urn="urn:adsk.eagle:package:15617734/2"/>
 <part name="JP1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X3" device="" package3d_urn="urn:adsk.eagle:package:22462/2" value="ICSP"/>
 <part name="U1" library="ToF-Module" deviceset="ATMEGA328P" device="" package3d_urn="urn:adsk.eagle:package:12666433/1"/>
 <part name="U2" library="ToF-Module" deviceset="BSS138DWQ" device="" package3d_urn="urn:adsk.eagle:package:12680881/1"/>
 <part name="U3" library="ToF-Module" deviceset="MIC5504" device="_2.8YM5" package3d_urn="urn:adsk.eagle:package:12680911/1"/>
 <part name="X1" library="ToF-Module" deviceset="RESONATOR" device="8M00"/>
-<part name="VL1" library="st-vl-sensor" deviceset="VL53L0X" device=""/>
+<part name="VL1" library="st-vl-sensor" library_urn="urn:adsk.eagle:library:15619648" deviceset="VL53L0X" device="" package3d_urn="urn:adsk.eagle:package:15619656/2"/>
 <part name="SDA" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="TP20SQ" package3d_urn="urn:adsk.eagle:package:27980/1"/>
 <part name="SCL" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="TP20SQ" package3d_urn="urn:adsk.eagle:package:27980/1"/>
 <part name="EN" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="TP20SQ" package3d_urn="urn:adsk.eagle:package:27980/1"/>
